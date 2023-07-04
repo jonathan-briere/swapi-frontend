@@ -1,55 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
-const client = new ApolloClient({
-  uri: 'http://localhost:57326/',
-  cache: new InMemoryCache()
-});
+import React from "react";
+import ReactDOM from "react-dom";
 
-// client
-//   .query({
-//     query: gql`
-//       query GetRates {
-//         rates(currency: "USD") {
-//           currency
-//         }
-//       }
-//     `
-//   })
-//   .then(result => console.log(result));
-// debugger
-//   client.query({
-//     query: gql`
-//     query allPeople(first:10){
-//       people {
-//         id,
-//         name,
-//         birthYear,
-//         gender,
-//       species { name },
-//          homeworld { name }
-//       }
-//       }
-//     `
-//   }) .then(result => console.log(result));
+import "./index.css";
+import {App} from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_API_URL,
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
   <React.StrictMode>
-      <ApolloProvider client={client}>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
     </ApolloProvider>
-
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

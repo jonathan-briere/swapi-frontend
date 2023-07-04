@@ -1,11 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import Component3 from "./components/Component3"
+import "./App.css";
+import { StarWars } from "./containers/StarWars";
 
-function App() {
-  return (
-    <Component3/>
-  );
-}
-
-export default App;
+export const App = () => (
+  <StarWars />
+)
